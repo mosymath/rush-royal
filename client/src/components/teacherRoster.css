@@ -1,0 +1,91 @@
+.mosy-roster-toggle { margin-top: .72rem; }
+.mosy-roster-toggle > button, .mosy-roster-header > button { display: inline-flex; align-items: center; gap: .35rem; border: 0; border-radius: .62rem; padding: .48rem .6rem; background: rgba(120,86,153,.12); color: #765094; font-size: .64rem; font-weight: 950; letter-spacing: .04em; cursor: pointer; }
+.mosy-roster-toggle svg:last-child { transition: transform .18s cubic-bezier(.23,1,.32,1); }
+.mosy-roster-toggle svg.is-open { transform: rotate(180deg); }
+.mosy-teacher-roster { margin-top: .62rem; border-top: 1px solid rgba(122,86,151,.18); padding-top: .72rem; }
+.mosy-roster-header { display: flex; align-items: center; justify-content: space-between; gap: .6rem; }
+.mosy-roster-header div { display: grid; gap: .06rem; }
+.mosy-roster-header b { font-size: .64rem; letter-spacing: .1em; color: #805397; }
+.mosy-roster-header span { font-size: .65rem; font-weight: 700; color: #795d80; }
+.mosy-roster-header small { color: #8c7085; font-size: .53rem; font-weight: 800; letter-spacing: .03em; }
+.mosy-roster-header small.is-refreshing { color: #7c5b98; }
+.mosy-roster-header > button { background: #f9edff; }
+.mosy-roster-header > button:disabled { opacity: .6; cursor: not-allowed; }
+.mosy-roster-header .is-spinning { animation: mosy-roster-spin .8s linear infinite; }
+.mosy-roster-summary { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .45rem; margin-top: .62rem; }
+.mosy-roster-summary > div { display: grid; gap: .08rem; padding: .55rem .6rem; border: 1px solid rgba(126,86,153,.16); border-radius: .7rem; background: linear-gradient(135deg,rgba(255,255,255,.78),rgba(250,235,255,.68)); }
+.mosy-roster-summary b { font-size: 1rem; color: #9e5d83; line-height: 1; }
+.mosy-roster-summary span { font-size: .53rem; font-weight: 950; letter-spacing: .07em; color: #805d8b; }
+.mosy-roster-filters { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr auto; gap: .35rem; align-items: end; margin-top: .62rem; }
+.mosy-roster-filters label { display: grid; gap: .18rem; }
+.mosy-roster-filters label > span { color: #815a92; font-size: .52rem; font-weight: 950; letter-spacing: .06em; }
+.mosy-roster-filters input, .mosy-roster-filters select { min-width: 0; width: 100%; border: 1px solid rgba(125,82,152,.24); border-radius: .55rem; background: rgba(255,255,255,.82); padding: .42rem .45rem; color: #5a3b68; font-size: .64rem; font-weight: 700; outline: none; }
+.mosy-roster-filters input:focus, .mosy-roster-filters select:focus { border-color: #d7748a; box-shadow: 0 0 0 3px rgba(215,116,138,.12); }
+.mosy-roster-search { position: relative; }
+.mosy-roster-search svg { position: absolute; left: .42rem; top: 1.34rem; color: #a272a9; pointer-events: none; }
+.mosy-roster-search input { padding-left: 1.6rem; }
+.mosy-roster-clear { display: inline-flex; align-items: center; gap: .2rem; min-height: 2.04rem; border: 0; border-radius: .55rem; padding: .42rem .48rem; background: #f4e2e8; color: #aa5d6a; font-size: .56rem; font-weight: 950; cursor: pointer; }
+.mosy-roster-clear:disabled { opacity: .48; cursor: not-allowed; }
+.mosy-roster-presets { display: grid; gap: .42rem; margin-top: .62rem; padding: .56rem; border: 1px solid rgba(126,86,153,.16); border-radius: .72rem; background: linear-gradient(135deg,rgba(250,239,255,.72),rgba(255,255,255,.58)); }
+.mosy-roster-presets-heading { display: flex; align-items: center; gap: .35rem; color: #855a99; }
+.mosy-roster-presets-heading > div { display: grid; gap: .04rem; }
+.mosy-roster-presets-heading b { font-size: .57rem; font-weight: 950; letter-spacing: .08em; }
+.mosy-roster-presets-heading span { color: #856d8b; font-size: .56rem; font-weight: 700; }
+.mosy-roster-preset-save { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: end; gap: .35rem; }
+.mosy-roster-preset-save label { display: grid; gap: .18rem; }
+.mosy-roster-preset-save label > span { color: #815a92; font-size: .52rem; font-weight: 950; letter-spacing: .06em; }
+.mosy-roster-preset-save input { min-width: 0; width: 100%; border: 1px solid rgba(125,82,152,.24); border-radius: .55rem; background: rgba(255,255,255,.82); padding: .42rem .45rem; color: #5a3b68; font-size: .64rem; font-weight: 700; outline: none; }
+.mosy-roster-preset-save input:focus { border-color: #d7748a; box-shadow: 0 0 0 3px rgba(215,116,138,.12); }
+.mosy-roster-preset-save button { display: inline-flex; align-items: center; gap: .25rem; min-height: 2.04rem; border: 0; border-radius: .55rem; padding: .42rem .52rem; background: #835593; color: white; font-size: .56rem; font-weight: 950; letter-spacing: .03em; cursor: pointer; }
+.mosy-roster-preset-save button:disabled, .mosy-roster-preset-apply:disabled, .mosy-roster-preset-delete:disabled { opacity: .52; cursor: not-allowed; }
+.mosy-roster-preset-feedback { margin: 0; color: #785c7d; font-size: .6rem; font-weight: 700; line-height: 1.35; }
+.mosy-roster-preset-feedback.is-error { color: #a15661; }
+.mosy-roster-preset-list { display: grid; gap: .28rem; }
+.mosy-roster-preset-list article { display: grid; grid-template-columns: minmax(0,1fr) auto auto; align-items: stretch; overflow: hidden; border: 1px solid rgba(123,86,151,.13); border-radius: .58rem; background: rgba(255,255,255,.64); }
+.mosy-roster-preset-apply { display: grid; gap: .06rem; min-width: 0; border: 0; padding: .4rem .46rem; background: transparent; color: #654775; text-align: left; cursor: pointer; }
+.mosy-roster-preset-apply:hover { background: rgba(249,237,255,.78); }
+.mosy-roster-preset-apply b { overflow: hidden; font-size: .62rem; font-weight: 950; text-overflow: ellipsis; white-space: nowrap; }
+.mosy-roster-preset-apply span { overflow: hidden; color: #866d8c; font-size: .54rem; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
+.mosy-roster-preset-delete { display: grid; place-items: center; width: 2rem; border: 0; border-left: 1px solid rgba(123,86,151,.12); background: rgba(244,226,232,.72); color: #ad6270; cursor: pointer; }
+.mosy-roster-preset-delete:hover { background: #f1d7de; }
+.mosy-roster-preset-default { display: inline-flex; align-items: center; gap: .2rem; border: 0; border-left: 1px solid rgba(123,86,151,.12); padding: .34rem .4rem; background: rgba(247,237,255,.7); color: #815d93; font-size: .49rem; font-weight: 950; letter-spacing: .03em; cursor: pointer; }
+.mosy-roster-preset-default:hover { background: #eee0fa; }
+.mosy-roster-preset-default.is-default { background: #f8e7a7; color: #876219; }
+.mosy-roster-report-preview { display: grid; grid-template-columns: auto minmax(0,1fr) auto; align-items: center; gap: .42rem; margin-top: .62rem; padding: .56rem; border: 1px solid rgba(123,86,151,.16); border-radius: .72rem; background: linear-gradient(135deg,rgba(236,248,255,.78),rgba(253,247,255,.72)); color: #72568b; }
+.mosy-roster-report-preview > div { display: grid; gap: .06rem; min-width: 0; }
+.mosy-roster-report-preview b { color: #6a4b84; font-size: .57rem; font-weight: 950; letter-spacing: .08em; }
+.mosy-roster-report-preview span { color: #776987; font-size: .57rem; font-weight: 700; }
+.mosy-roster-report-actions { display: inline-flex; align-items: center; gap: .28rem; }
+.mosy-roster-report-preview button { display: inline-flex; align-items: center; gap: .25rem; min-height: 2.04rem; border: 0; border-radius: .55rem; padding: .42rem .52rem; background: #5d6d9d; color: #fff; font-size: .55rem; font-weight: 950; letter-spacing: .03em; cursor: pointer; }
+.mosy-roster-report-preview button:last-child { background: #5b8a81; }
+.mosy-roster-report-preview button:disabled { opacity: .5; cursor: not-allowed; }
+.mosy-roster-class-name { display: grid; gap: .38rem; margin-top: .62rem; padding: .56rem; border: 1px solid rgba(123,86,151,.16); border-radius: .72rem; background: linear-gradient(135deg,rgba(255,247,230,.72),rgba(255,255,255,.62)); }
+.mosy-roster-class-name > div:first-child { display: grid; gap: .04rem; }
+.mosy-roster-class-name b { color: #7e5d62; font-size: .57rem; font-weight: 950; letter-spacing: .08em; }
+.mosy-roster-class-name span { color: #856d78; font-size: .56rem; font-weight: 700; }
+.mosy-roster-class-name-form { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center; gap: .35rem; }
+.mosy-roster-class-name input { min-width: 0; width: 100%; border: 1px solid rgba(130,94,118,.26); border-radius: .55rem; background: rgba(255,255,255,.84); padding: .42rem .45rem; color: #5b3f4d; font-size: .64rem; font-weight: 700; outline: none; }
+.mosy-roster-class-name input:focus { border-color: #d78675; box-shadow: 0 0 0 3px rgba(215,134,117,.13); }
+.mosy-roster-class-name button { min-height: 2.04rem; border: 0; border-radius: .55rem; padding: .42rem .52rem; background: #9a6970; color: #fff; font-size: .56rem; font-weight: 950; letter-spacing: .03em; cursor: pointer; }
+.mosy-roster-class-name button:disabled { opacity: .52; cursor: not-allowed; }
+.mosy-roster-class-name-feedback { margin: 0; color: #7e6370; font-size: .6rem; font-weight: 700; line-height: 1.35; }
+.mosy-roster-class-name-feedback.is-error { color: #a15661; }
+.mosy-roster-sortbar { display: flex; flex-wrap: wrap; gap: .32rem; margin-top: .62rem; }
+.mosy-roster-sortbar button { display: inline-flex; align-items: center; gap: .25rem; border: 1px solid rgba(123,86,151,.15); border-radius: .55rem; padding: .36rem .45rem; background: rgba(255,255,255,.62); color: #78518f; font-size: .57rem; font-weight: 950; letter-spacing: .04em; cursor: pointer; }
+.mosy-roster-sortbar button:hover { background: #f7edff; }
+.mosy-roster-list { display: grid; gap: .42rem; margin-top: .62rem; max-height: 18rem; overflow: auto; padding-right: .12rem; }
+.mosy-roster-list article { display: flex; align-items: center; gap: .5rem; padding: .45rem .5rem; border: 1px solid rgba(124,93,148,.12); border-radius: .72rem; background: rgba(255,255,255,.65); }
+.mosy-roster-avatar { display: grid; place-items: center; flex: 0 0 2.15rem; width: 2.15rem; height: 2.15rem; overflow: hidden; border-radius: .7rem; background: radial-gradient(circle at 30% 25%,#fff,color-mix(in srgb,var(--avatar-glow) 55%,#ffe8c5)); }
+.mosy-roster-avatar img { width: 100%; height: 100%; object-fit: contain; }
+.mosy-roster-avatar i { font-size: 1.38rem; font-style: normal; }
+.mosy-roster-list article > div { display: grid; gap: .03rem; min-width: 0; }
+.mosy-roster-list article b { overflow: hidden; font-size: .75rem; text-overflow: ellipsis; white-space: nowrap; }
+.mosy-roster-list article small { color: #795f7d; font-size: .62rem; font-weight: 700; }
+.mosy-roster-list time { color: #916e83; font-size: .57rem; font-weight: 700; white-space: nowrap; }
+.mosy-roster-list article > strong { margin-left: auto; color: #b06063; font-size: .72rem; text-align: right; }
+.mosy-roster-list article > strong small { display: block; color: #916d7e; font-size: .5rem; letter-spacing: .08em; }
+.mosy-roster-message { margin: .62rem 0 0; padding: .62rem; border-radius: .7rem; background: rgba(255,255,255,.58); color: #755c7a; font-size: .68rem; font-weight: 700; line-height: 1.35; }
+.mosy-roster-message.is-error { color: #a15661; }
+@keyframes mosy-roster-spin { to { transform: rotate(360deg); } }
+@media (max-width: 640px) { .mosy-roster-filters { grid-template-columns: repeat(2,minmax(0,1fr)); } .mosy-roster-search { grid-column: 1 / -1; } .mosy-roster-clear { justify-content: center; } .mosy-roster-preset-default span { display: none; } .mosy-roster-preset-default { width: 2rem; justify-content: center; padding: .34rem; } .mosy-roster-class-name-form { grid-template-columns: minmax(0,1fr) auto; } .mosy-roster-report-preview { grid-template-columns: auto minmax(0,1fr); } .mosy-roster-report-actions { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); } .mosy-roster-report-preview button { justify-content: center; } }
+@media (max-width: 380px) { .mosy-roster-summary { gap: .34rem; } .mosy-roster-summary > div { padding: .48rem; } .mosy-roster-summary b { font-size: .9rem; } .mosy-roster-filters { grid-template-columns: 1fr; } .mosy-roster-filters label, .mosy-roster-search { grid-column: auto; } .mosy-roster-list time { white-space: normal; } }

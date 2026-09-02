@@ -1,0 +1,148 @@
+/* Warm, visible fireflies travel over the glass depth layer without becoming a visual frame. */
+.mosy-library::before { display: none; }
+
+.mosy-library {
+  isolation: isolate;
+}
+
+.mosy-library-heading {
+  position: relative;
+  z-index: 5;
+}
+
+.mosy-library > .mosy-lesson-card {
+  position: relative;
+  z-index: 2;
+}
+
+.mosy-library > .mosy-lesson-card::before {
+  background:
+    radial-gradient(circle at 8% 15%, rgba(255, 246, 158, 0.98) 0 2px, transparent 3.2px),
+    radial-gradient(circle at 21% 34%, rgba(178, 255, 236, 0.94) 0 1.8px, transparent 3px),
+    radial-gradient(circle at 35% 81%, rgba(255, 211, 235, 0.96) 0 2px, transparent 3.2px),
+    radial-gradient(circle at 49% 14%, rgba(255, 243, 159, 0.96) 0 1.8px, transparent 3px),
+    radial-gradient(circle at 62% 68%, rgba(178, 255, 236, 0.9) 0 1.6px, transparent 2.8px),
+    radial-gradient(circle at 74% 31%, rgba(255, 211, 235, 0.94) 0 1.9px, transparent 3px),
+    radial-gradient(circle at 87% 18%, rgba(255, 243, 159, 0.94) 0 1.8px, transparent 3px),
+    radial-gradient(circle at 79% 83%, rgba(178, 255, 236, 0.92) 0 1.8px, transparent 3px);
+  filter: drop-shadow(0 0 6px rgba(255, 219, 99, 0.96));
+}
+
+.mosy-lesson-copy {
+  background:
+    radial-gradient(circle at 86% 15%, rgba(255, 205, 224, 0.31), transparent 28%),
+    radial-gradient(circle at 13% 88%, rgba(174, 244, 234, 0.24), transparent 32%),
+    linear-gradient(116deg, rgba(255, 255, 255, 0.52), rgba(255, 251, 247, 0.31) 55%, rgba(245, 239, 255, 0.38)) !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.88);
+  box-shadow:
+    inset 1px 0 0 rgba(255, 255, 255, 0.96),
+    inset 0 1px 0 rgba(255, 255, 255, 0.62),
+    inset 0 -16px 27px rgba(180, 159, 236, 0.08),
+    inset 0 0 30px rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(9px) saturate(1.2);
+  -webkit-backdrop-filter: blur(9px) saturate(1.2);
+}
+
+.mosy-lesson-copy::before {
+  height: 43%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.57), transparent);
+}
+
+.mosy-library-fireflies {
+  position: absolute;
+  z-index: 4;
+  inset: 60px -4vw 0;
+  overflow: hidden;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.mosy-library-fireflies i {
+  width: 8px;
+  height: 8px;
+  opacity: 1;
+  background: transparent;
+  box-shadow: none;
+  animation: mosyWarmFireflyTravel 9.2s cubic-bezier(0.22, 0.8, 0.32, 1) infinite;
+}
+
+.mosy-library-fireflies i::before {
+  content: "✦";
+  position: absolute;
+  inset: -6px;
+  color: #ffffff;
+  font: 900 20px/1 Fredoka, sans-serif;
+  text-align: center;
+  text-shadow: 0 0 2px #fffde1, 0 0 7px #fff3a9, 0 0 15px #ffbd31, 0 0 26px rgba(255, 174, 42, 0.95);
+}
+
+.mosy-library-fireflies i::after {
+  width: 29px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 241, 158, 0.92));
+  filter: blur(0.1px);
+}
+
+.mosy-library-fireflies i:nth-child(3n) {
+  width: 6px;
+  height: 6px;
+}
+
+.mosy-library-fireflies i:nth-child(3n + 2) {
+  width: 7px;
+  height: 7px;
+}
+
+.mosy-library-fireflies i:nth-child(3n)::before {
+  color: #fff8fc;
+  text-shadow: 0 0 2px #fff0f8, 0 0 7px #ffd0e9, 0 0 15px #ff79bc, 0 0 26px rgba(255, 101, 179, 0.92);
+}
+
+.mosy-library-fireflies i:nth-child(3n + 2)::before {
+  color: #f4fffd;
+  text-shadow: 0 0 2px #e8fffa, 0 0 7px #b9fff1, 0 0 15px #46e4ca, 0 0 26px rgba(57, 212, 190, 0.92);
+}
+
+@keyframes mosyWarmFireflyTravel {
+  0% {
+    opacity: 0.78;
+    transform: translate3d(-10px, 28px, 0) scale(0.34);
+    filter: blur(0.9px);
+  }
+  24% {
+    opacity: 0.95;
+  }
+  62% {
+    opacity: 0.9;
+    transform: translate3d(10px, -18px, 0) scale(1.05);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0.72;
+    transform: translate3d(24px, -64px, 0) scale(1.55);
+    filter: blur(0.7px);
+  }
+}
+
+@media (max-width: 760px) {
+  .mosy-library-fireflies {
+    inset: 54px -8vw 0;
+  }
+
+  .mosy-library-fireflies i {
+    scale: 0.72;
+  }
+
+  .mosy-lesson-copy {
+    background: linear-gradient(116deg, rgba(255, 255, 255, 0.61), rgba(255, 251, 247, 0.42) 55%, rgba(245, 239, 255, 0.47)) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mosy-library-fireflies i {
+    animation: none;
+    opacity: 0.9;
+    transform: none;
+    filter: none;
+  }
+}

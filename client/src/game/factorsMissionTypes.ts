@@ -1,0 +1,6 @@
+export const FACTORS_ROUTE_IDS = ["factor-trail", "prime-pulse", "gcf-guild", "multiple-momentum", "common-crossing", "relationship-relay", "factors-master-exam"] as const;
+export type FactorsRouteId = (typeof FACTORS_ROUTE_IDS)[number]; export type FactorsLessonRouteId = Exclude<FactorsRouteId, "factors-master-exam">; export type FactorsLevelId = "easy" | "normal" | "hard";
+export type FactorsQuestion = { id:string; prompt:string; choices:readonly [string,string,string,string]; correctChoice:string; explanation:string; skill:string; level:FactorsLevelId; sourceLabels:readonly string[]; teacherSourceId:string };
+export type FactorsRoute = { id:FactorsRouteId; lesson:string; title:string; shortTitle:string; subtitle:string; description:string; accent:string; accentSoft:string; icon:string; reward:{name:string;color:string}; questionCount:number; isMaster?:boolean };
+export type FactorsRouteProgress = { unlockedLevel:FactorsLevelId; completedLevels:FactorsLevelId[]; bestScores:Partial<Record<FactorsLevelId,number>> }; export type FactorsProgressState=Record<FactorsLessonRouteId,FactorsRouteProgress>;
+export const FACTORS_LEVELS=[{id:"easy",label:"Easy",hint:"Build the first factor chain",multiplier:1},{id:"normal",label:"Normal",hint:"Power the number grid",multiplier:1.25},{id:"hard",label:"Hard",hint:"Master the factor arena",multiplier:1.5}] as const;
