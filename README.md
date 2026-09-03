@@ -2,7 +2,8 @@
 
 A colorful, game-first math learning arcade for kids. Ten playable worlds (Rounding, Shapes, Measurement, Area & Perimeter, Multiplication, Times Tables, Factors & Multiples, Computation, and Order of Operations), each with Easy / Normal / Hard levels, XP progression, a coin shop, and a teacher admin panel.
 
-> **Repo name:** `Rush-Royal` · **Game brand:** Mosy Math Adventure
+> **Repo name:** `rush-royal` · **Game brand:** Mosy Math Adventure
+> **Live:** https://mosymath.github.io/rush-royal/
 
 ## Features
 
