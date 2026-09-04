@@ -1,6 +1,6 @@
 import type { CreateExpressContextOptions } from "@trpc/server/adapters/express";
 import { parse as parseCookieHeader } from "cookie";
-import type { User } from "../../drizzle/schema";
+import type { User } from "../db";
 import { ADMIN_COOKIE, verifyAdminToken } from "./adminSession";
 import { sdk } from "./sdk";
 

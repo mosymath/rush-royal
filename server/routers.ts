@@ -1,5 +1,5 @@
-import { COOKIE_NAME } from "@shared/const";
-import { getShopItem, parseInventory, SHOP_ITEMS } from "@shared/shop";
+import { COOKIE_NAME } from "../shared/const";
+import { getShopItem, parseInventory, SHOP_ITEMS } from "../shared/shop";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { ADMIN_COOKIE, createAdminToken, verifyAdminPassword } from "./_core/adminSession";
