@@ -1,6 +1,6 @@
 import { parse as parseCookieHeader } from "cookie";
-import type { User } from "../db";
-import { ADMIN_COOKIE, verifyAdminToken } from "./adminSession";
+import type { User } from "../db.js";
+import { ADMIN_COOKIE, verifyAdminToken } from "./adminSession.js";
 
 export type CookieToSet = { name: string; value: string; options: Record<string, unknown> };
 

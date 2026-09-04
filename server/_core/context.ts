@@ -1,8 +1,8 @@
 import type { CreateExpressContextOptions } from "@trpc/server/adapters/express";
 import { parse as parseCookieHeader } from "cookie";
-import type { User } from "../db";
-import { ADMIN_COOKIE, verifyAdminToken } from "./adminSession";
-import { sdk } from "./sdk";
+import type { User } from "../db.js";
+import { ADMIN_COOKIE, verifyAdminToken } from "./adminSession.js";
+import { sdk } from "./sdk.js";
 
 export type TrpcContext = {
   req: CreateExpressContextOptions["req"];

@@ -1,12 +1,12 @@
-import { COOKIE_NAME } from "../shared/const";
-import { getShopItem, parseInventory, SHOP_ITEMS } from "../shared/shop";
+import { COOKIE_NAME } from "../shared/const.js";
+import { getShopItem, parseInventory, SHOP_ITEMS } from "../shared/shop.js";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
-import { ADMIN_COOKIE, createAdminToken, verifyAdminPassword } from "./_core/adminSession";
-import { getSessionCookieOptions } from "./_core/cookies";
-import { systemRouter } from "./_core/systemRouter";
-import { adminProcedure, publicProcedure, router } from "./_core/trpc";
-import { addGuestPlayerInventoryItem, awardGuestPlayerCoins, awardGuestPlayerScore, deleteTeacherRosterFilterPreset, equipGuestPlayerShopItem, getGuestPlayerProfile, getMosyMathCatalog, getTeacherRosterReportPreference, listGuestPlayerProfiles, listLessons, listTeacherRosterFilterPresets, renameGuestPlayerProfile, resetGuestPlayerProfile, saveGuestPlayerProfile, saveTeacherRosterFilterPreset, saveTeacherRosterReportPreference, setLessonStatus, setTeacherDefaultRosterFilterPreset, spendGuestPlayerCoins } from "./db";
+import { ADMIN_COOKIE, createAdminToken, verifyAdminPassword } from "./_core/adminSession.js";
+import { getSessionCookieOptions } from "./_core/cookies.js";
+import { systemRouter } from "./_core/systemRouter.js";
+import { adminProcedure, publicProcedure, router } from "./_core/trpc.js";
+import { addGuestPlayerInventoryItem, awardGuestPlayerCoins, awardGuestPlayerScore, deleteTeacherRosterFilterPreset, equipGuestPlayerShopItem, getGuestPlayerProfile, getMosyMathCatalog, getTeacherRosterReportPreference, listGuestPlayerProfiles, listLessons, listTeacherRosterFilterPresets, renameGuestPlayerProfile, resetGuestPlayerProfile, saveGuestPlayerProfile, saveTeacherRosterFilterPreset, saveTeacherRosterReportPreference, setLessonStatus, setTeacherDefaultRosterFilterPreset, spendGuestPlayerCoins } from "./db.js";
 
 const adminCookieOptions = {
   httpOnly: true,

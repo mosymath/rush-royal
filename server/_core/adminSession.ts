@@ -1,6 +1,6 @@
 import { timingSafeEqual } from "node:crypto";
 import { SignJWT, jwtVerify } from "jose";
-import { ENV } from "./env";
+import { ENV } from "./env.js";
 
 export const ADMIN_COOKIE = "mosy_admin_session";
 const ADMIN_TOKEN_TTL_MS = 30 * 24 * 60 * 60 * 1000;

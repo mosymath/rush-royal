@@ -1,8 +1,8 @@
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
-import { appRouter } from "../server/routers";
-import type { TrpcContext } from "../server/_core/context";
-import { createFetchContext, type CookieToSet } from "../server/_core/contextFetch";
-import { initDb } from "../server/db";
+import { appRouter } from "../server/routers.js";
+import type { TrpcContext } from "../server/_core/context.js";
+import { createFetchContext, type CookieToSet } from "../server/_core/contextFetch.js";
+import { initDb } from "../server/db.js";
 
 export const config = { runtime: "nodejs" };
 
