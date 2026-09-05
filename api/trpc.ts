@@ -29,10 +29,21 @@ export default async function handler(req: Request): Promise<Response> {
     initialized = true;
   }
 
+  // Vercel hands the function a path-relative URL (e.g. "/api/trpc?batch=1");
+  // the tRPC fetch adapter calls `new URL(req.url)`, which needs an absolute URL.
+  const host = req.headers.get("x-forwarded-host") || req.headers.get("host") || "vercel.app";
+  const proto = req.headers.get("x-forwarded-proto") || "https";
+  const init: RequestInit & { duplex?: "half" } = { method: req.method, headers: req.headers };
+  if (req.body) {
+    init.body = req.body;
+    init.duplex = "half";
+  }
+  const request = new Request(new URL(req.url, `${proto}://${host}`).toString(), init);
+
   const jar: CookieToSet[] = [];
   const response = await fetchRequestHandler({
     endpoint: "/api/trpc",
-    req,
+    req: request,
     router: appRouter,
     createContext: (opts) => createFetchContext(opts.req, jar) as unknown as TrpcContext,
   });
