@@ -17,8 +17,25 @@ function serializeCookie(name: string, value: string, options: Record<string, un
   return parts.join("; ");
 }
 
+async function readBody(req: Record<string, unknown>): Promise<string | null> {
+  if (req.method === "GET" || req.method === "HEAD") return null;
+  const body = req.body;
+  if (typeof body === "string") return body;
+  if (Buffer.isBuffer(body)) return body.toString("utf8");
+  if (body != null && typeof body === "object") {
+    const b = body as { pipe?: unknown; [Symbol.asyncIterator]?: unknown };
+    if (typeof b.pipe === "function" || b[Symbol.asyncIterator]) {
+      const chunks: Buffer[] = [];
+      for await (const chunk of body as AsyncIterable<Uint8Array>) chunks.push(Buffer.from(chunk));
+      return Buffer.concat(chunks).toString("utf8");
+    }
+    return JSON.stringify(body);
+  }
+  return null;
+}
+
 /** Shared Vercel serverless handler for both /api/trpc and /api/trpc/*. */
-export async function trpcHandler(req: Request): Promise<Response> {
+export async function trpcHandler(req: Record<string, unknown>): Promise<Response> {
   if (!initialized) {
     try {
       await initDb();
@@ -28,16 +45,25 @@ export async function trpcHandler(req: Request): Promise<Response> {
     initialized = true;
   }
 
-  // Vercel hands the function a path-relative URL (e.g. "/api/trpc?batch=1");
-  // the tRPC fetch adapter calls `new URL(req.url)`, which needs an absolute URL.
-  const host = req.headers.get("x-forwarded-host") || req.headers.get("host") || "vercel.app";
-  const proto = req.headers.get("x-forwarded-proto") || "https";
-  const init: RequestInit & { duplex?: "half" } = { method: req.method, headers: req.headers };
-  if (req.body) {
-    init.body = req.body;
+  const headersObj = (req.headers ?? {}) as Record<string, string | string[] | undefined>;
+  const host = headersObj["x-forwarded-host"] ?? headersObj.host ?? "vercel.app";
+  const proto = headersObj["x-forwarded-proto"] ?? "https";
+  const url = new URL(req.url as string, `${proto}://${host}`).toString();
+  const method = (req.method as string) ?? "GET";
+
+  const headers = new Headers();
+  for (const [key, value] of Object.entries(headersObj)) {
+    if (typeof value === "string") headers.set(key, value);
+    else if (Array.isArray(value)) value.forEach((item) => headers.append(key, item));
+  }
+
+  const body = await readBody(req);
+  const init: RequestInit & { duplex?: "half" } = { method, headers };
+  if (body !== null) {
+    init.body = body;
     init.duplex = "half";
   }
-  const request = new Request(new URL(req.url, `${proto}://${host}`).toString(), init);
+  const request = new Request(url, init);
 
   const jar: CookieToSet[] = [];
   const response = await fetchRequestHandler({
@@ -49,9 +75,9 @@ export async function trpcHandler(req: Request): Promise<Response> {
 
   if (jar.length === 0) return response;
 
-  const headers = new Headers(response.headers);
+  const respHeaders = new Headers(response.headers);
   for (const cookie of jar) {
-    headers.append("set-cookie", serializeCookie(cookie.name, cookie.value, cookie.options));
+    respHeaders.append("set-cookie", serializeCookie(cookie.name, cookie.value, cookie.options));
   }
-  return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
+  return new Response(response.body, { status: response.status, statusText: response.statusText, headers: respHeaders });
 }
