@@ -2,7 +2,7 @@ import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 import { appRouter } from "../routers.js";
 import type { TrpcContext } from "./context.js";
 import { createFetchContext, type CookieToSet } from "./contextFetch.js";
-import { initDb } from "../db.js";
+import { initDb, seedCatalogIfEmpty } from "../db.js";
 
 let initialized = false;
 
@@ -30,6 +30,7 @@ export async function trpcHandler(request: Request): Promise<Response> {
   if (!initialized) {
     try {
       await initDb();
+      await seedCatalogIfEmpty();
     } catch (error) {
       console.error("[Database] init failed:", error);
     }
